@@ -21,5 +21,10 @@ class Request
 
     public function body()
     {
+        if ($this->method() === "POST") {
+            return filter_input_array(INPUT_POST, HTML_SPECIALCHARS);
+        } else {
+            return filter_input_array(INPUT_POST, HTML_SPECIALCHARS);
+        }
     }
 };

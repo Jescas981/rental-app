@@ -46,12 +46,21 @@ class Route
 
     public function render(string $view, array $args = [])
     {
+        return $this->renderWithTemplate($view, 'main', $args);
+    }
+
+    public function renderWithTemplate(string $view, string $template, array $args = [])
+    {
         foreach ($args as $arg) {
             $$arg = $arg;
         }
+
+        ob_start();
+        include __DIR__ . '/../app/views/templates/' . $template . '.php';
+        $template = ob_get_clean();
         ob_start();
         include __DIR__ . '/../app/views/' . $view . '.php';
         $view = ob_get_clean();
-        return $view;
+        return str_replace('{{template}}', $view, $template);
     }
 };
