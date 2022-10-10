@@ -1,0 +1,17 @@
+{
+    "name": "jescas981/rental",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jesus Castillo"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "./core",
+            "Controllers\\": "./app/controllers"
+        }
+    }
+}
